@@ -3,6 +3,11 @@ from keras.models import load_model
 from PIL import ImageOps, Image
 from util import classify
 
+st.set_page_config(
+    page_title="AI Image Investigator",  
+    page_icon=":mag_right:",         
+    layout="wide",        
+
 st.title(":green[AI Image Investigator] :mag_right:")
 
 uploaded_files = st.file_uploader(
