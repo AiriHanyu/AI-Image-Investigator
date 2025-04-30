@@ -3,7 +3,12 @@ from keras.models import load_model
 from PIL import ImageOps, Image
 from util import classify
 
-st.sidebar.title("Home")
+st.set_page_config(
+    page_title="AI Image Investigator",  
+    page_icon="🔎",           
+    layout="wide",               
+    initial_sidebar_state="expanded"
+)
 
 st.title(":green[AI Image Investigator] :mag_right:")
 
