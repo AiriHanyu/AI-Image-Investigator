@@ -6,11 +6,11 @@ st.title("About Us")
 st.markdown("---")
 
 st.subheader("AIMAR ANSHARI")
+st.markdown("aiimaransharii@gmail.com")
 st.markdown("[Instagram](https://instagram.com/aynshz_ryuxzy)")
-st.markdown("[Email](mailto:aiimaransharii@gmail.com)")
 
 st.markdown("---")
 
 st.subheader("DEWI AURA SYALSABILLAH F")
+st.markdown("fadjerisyalsabillah@gmail.com")
 st.markdown("[Instagram](https://instagram.com/quivyy_)")
-st.markdown("[Email](mailto:fadjerisyalsabillah@gmail.com)")
