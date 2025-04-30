@@ -4,8 +4,7 @@ from PIL import ImageOps, Image
 from util import classify
 
 st.set_page_config(
-    page_title="AI Image Investigator",  
-    page_icon="🔎",           
+    page_title="AI Image Investigator",            
     layout="wide",               
     initial_sidebar_state="expanded"
 )
