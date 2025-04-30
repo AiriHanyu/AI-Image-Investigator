@@ -9,7 +9,7 @@ st.set_page_config(
     layout="wide",   
 )
 
-st.title(":green[AI Image Investigator] :mag_right:")
+st.title(":green[AI Image Investigator]")
 
 uploaded_files = st.file_uploader(
     "",
