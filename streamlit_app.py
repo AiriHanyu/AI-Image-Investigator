@@ -3,7 +3,7 @@ from keras.models import load_model
 from PIL import ImageOps, Image
 from util import classify
 
-st.markdown("# Home")
+st.sidebar.title("Home")
 
 st.title(":green[AI Image Investigator] :mag_right:")
 
