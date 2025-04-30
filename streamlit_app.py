@@ -1,6 +1,6 @@
 import streamlit as st
 from keras.models import load_model 
-from PIL import Image
+from PIL import ImageOps, Image
 from util import classify
 
 
