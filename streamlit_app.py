@@ -12,7 +12,7 @@ uploaded_files = st.file_uploader(
     accept_multiple_files=True
 )
 
-model = load_model('model_vgg16.h5', compile = False)
+model = load_model('model_vgg16.h5')
 
 with open('labels.txt', 'r') as f:
     class_names = [a[:-1].split(' ')[1] for a in f.readlines()]
