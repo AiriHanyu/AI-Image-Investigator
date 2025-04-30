@@ -1,47 +1,10 @@
-import streamlit as st
-from PIL import Image, ImageDraw, ImageFont
-import numpy as np
-from tensorflow.keras.models import load_model
-from tensorflow.keras.preprocessing.image import img_to_array
-import os
-
-# Caching biar model gak diload berulang-ulang
-@st.cache_resource
-def load_vgg_model():
-    return load_model("model_vgg.keras")  # Pastikan path ini sesuai posisi file di repo
-
-model = load_vgg_model()
-
-st.title(":green[AI Image Investigation] :mag_right:")
-
-uploaded_files = st.file_uploader(
-    "Upload Gambar",
-    type=["jpg", "jpeg", "png", "webp"],
-    accept_multiple_files=True
-)
-
-def predict_image(img_pil):
-    img_resized = img_pil.resize((128, 128))
-    img_array = img_to_array(img_resized) / 255.0
-    img_array = np.expand_dims(img_array, axis=0)
-    prediction = model.predict(img_array)
-    return np.argmax(prediction)
-
-if uploaded_files:
-    images_to_check = []
-    for uploaded_file in uploaded_files:
-        image = Image.open(uploaded_file).convert("RGB")  # Convert biar aman
-        st.image(image, caption=uploaded_file.name, use_container_width=True)
-        images_to_check.append((uploaded_file.name, image))
-
-    st.success(f"{len(uploaded_files)} gambar berhasil diunggah!")
-
     if st.button("Investigasi"):
         st.subheader("Hasil Investigasi")
         for name, img in images_to_check:
             label_idx = predict_image(img)
-            pred_label = ["REAL", "FAKE"][label_idx]
-            color = (0, 255, 0) if pred_label == "REAL" else (255, 0, 0)
+            pred_label = class_names[label_idx]  # pakai dari label.txt
+
+            color = (0, 255, 0) if pred_label.upper() == "REAL" else (255, 0, 0)
 
             img_with_text = img.copy()
             draw = ImageDraw.Draw(img_with_text)
