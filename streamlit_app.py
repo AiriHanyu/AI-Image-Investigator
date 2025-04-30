@@ -6,7 +6,7 @@ from util import classify
 st.title(":green[AI Image Investigator] :mag_right:")
 
 uploaded_files = st.file_uploader(
-    "Upload Gambar",
+    "",
     type=["jpg", "jpeg", "png", "webp"],
     accept_multiple_files=True
 )
