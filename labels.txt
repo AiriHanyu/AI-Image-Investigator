@@ -1,2 +1,2 @@
-0 REAL
-1 FAKE
+0 FAKE
+1 REAL
