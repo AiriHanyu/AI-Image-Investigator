@@ -1,7 +1,7 @@
 import streamlit as st
 from keras.models import load_model 
 from PIL import Image
-from util.py import classify
+from util import classify
 
 
 st.title(":green[AI Image Investigator] :mag_right:")
