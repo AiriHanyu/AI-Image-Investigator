@@ -21,7 +21,7 @@ with open('labels.txt', 'r') as f:
 if uploaded_files:
     for uploaded_file in uploaded_files:
         image = Image.open(uploaded_file).convert("RGB")
-        st.image(image, caption=uploaded_file.name, use_container_width=True)
+        st.image(image, use_column_width=True)
         
         class_name, conf_score = classify(image, model, class_names)
         
