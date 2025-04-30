@@ -1,9 +1,8 @@
 import streamlit as st
-from PIL import Image, ImageDraw, ImageFont
-import numpy as np
-from tensorflow.keras.models import load_model
-from tensorflow.keras.preprocessing.image import img_to_array
-import os
+from keras.models import load_model 
+from PIL import Image
+from util import classify
+
 
 st.title(":green[AI Image Investigator] :mag_right:")
 
@@ -19,7 +18,6 @@ with open('labels.txt', 'r') as f:
     class_names = [a[:-1].split(' ')[1] for a in f.readlines()]
     f.close()
 
-if uploaded_files:
-    for uploaded_file in uploaded_files:
-        image = Image.open(uploaded_file).convert("RGB")
-        st.image(image, caption=uploaded_file.name, use_container_width=True)
+
+def classify(image, model, class_names):
+    return 'dummy_class_name', 0
