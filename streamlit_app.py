@@ -1,6 +1,6 @@
 import streamlit as st
 from keras.models import load_model 
-from PIL import Image
+from PIL import ImageOps, Image
 from util import classify
 
 
@@ -18,6 +18,12 @@ with open('labels.txt', 'r') as f:
     class_names = [a[:-1].split(' ')[1] for a in f.readlines()]
     f.close()
 
-
-def classify(image, model, class_names):
-    return 'dummy_class_name', 0
+if uploaded_files:
+    for uploaded_file in uploaded_files:
+        image = Image.open(uploaded_file).convert("RGB")
+        st.image(image, caption=uploaded_file.name, use_container_width=True)
+        
+        class_name, conf_score = classify(image, model, class_names)
+        
+        st.write("## {}".format(class_name))
+        st.write("### score: {}".format(conf_score))
