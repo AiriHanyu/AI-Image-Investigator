@@ -5,7 +5,7 @@ import numpy as np
 
 def classify(image, model, class_names):
     
-    image = ImageOps.fit(image, (128, 128), image.resampling.LANCZOS)
+    image = ImageOps.fit(image, (128, 128), Image.resampling.LANCZOS)
     
     image_array = np.asarray(image)
     
