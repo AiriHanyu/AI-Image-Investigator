@@ -1,4 +1,41 @@
-    if st.button("Investigasi"):
+import streamlit as st
+from PIL import Image, ImageDraw, ImageFont
+import numpy as np
+from tensorflow.keras.models import load_model
+from tensorflow.keras.preprocessing.image import img_to_array
+import os
+
+st.title(":green[AI Image Investigator] :mag_right:")
+
+uploaded_files = st.file_uploader(
+    "Upload Gambar",
+    type=["jpg", "jpeg", "png", "webp"],
+    accept_multiple_files=True
+)
+
+model = load_model('model_vgg.keras')
+
+with open('label.txt', 'r') as f:
+    class_names = [a[:-1].split(' ')[1] for a in f.readlines()]
+    f.close()
+
+def predict_image(img_pil):
+    img_resized = img_pil.resize((128, 128))
+    img_array = img_to_array(img_resized) / 255.0
+    img_array = np.expand_dims(img_array, axis=0)
+    prediction = model.predict(img_array)
+    return np.argmax(prediction)
+
+if uploaded_files:
+    images_to_check = []
+    for uploaded_file in uploaded_files:
+        image = Image.open(uploaded_file).convert("RGB")  # Convert biar aman
+        st.image(image, caption=uploaded_file.name, use_container_width=True)
+        images_to_check.append((uploaded_file.name, image))
+
+    st.success(f"{len(uploaded_files)} gambar berhasil diunggah!")
+
+if st.button("Investigasi"):
         st.subheader("Hasil Investigasi")
         for name, img in images_to_check:
             label_idx = predict_image(img)
