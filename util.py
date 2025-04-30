@@ -1,6 +1,6 @@
 import base64
 import streamlit as st
-from PIL import ImageOps
+from PIL import Image, ImageOps
 import numpy as np
 
 def classify(image, model, class_names):
