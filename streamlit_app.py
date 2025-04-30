@@ -19,6 +19,7 @@ with open('labels.txt', 'r') as f:
     class_names = [a[:-1].split(' ')[1] for a in f.readlines()]
     f.close()
 
-if uploaded_files is not None:
-    image = Image.open(uploaded_files).convert('RGB')
-    st.image(image, use_column_width = True)
+if uploaded_files:
+    for uploaded_file in uploaded_files:
+        image = Image.open(uploaded_file).convert("RGB")
+        st.image(image, caption=uploaded_file.name, use_column_width=True)
